@@ -50,10 +50,18 @@ We've crafted some handsome templates for you to use. Go ahead and continue to l
 There are actually some substantive differences between the Baysian framework and the frequentist framework for this problem.  More on this later.
 <p>X is a random variable that represents the true state of the subject.  X is 0 under the null hypothesis.  X is 1 if the treatment worked.
 <p>Y is a random variable that represents the measurement of the state of the subject.
-<p>P(X) = base rate
-<p>P(Y|1-X) = p-value
-<p>P(Y|X) = power
+<p>P(X) = base rate <input type='text' name='base_rate' id='base_rate' value='0.1' onchange='calculateFP()'>
+<p>P(Y|1-X) = p-value <input type='text' name='p-value' id='p-value' value='0.05' onchange='calculateFP()'>
+<p>P(Y|X) = power <input type='text' name='power' id='power' value='0.8' onchange='calculateFP()'>
 
+<br><br>
+<p><b>P(X|Y)</b> = false positives <input type='text' name='false_positive' id='false_positive' value='0.64' onchange='calculateFP()'>  
+<p>This is the probability that the treatment didn't work even though you measured that it did.  This is often counterintuitive, especially if the base rate is very low.
+<p>P(X|Y) = P(X)*P(Y|X)/P(Y) = base rate * power / P(Y)
+<p>P(1-Y) = P(1-Y n X) + P(1-Y n 1-X)
+<p>P(1-Y) = P(X)*P(1-Y|X) + P(1-X)*P(1-Y|1-X)
+<p>1 - P(Y) = base rate *(1-power) + (1 - base rate)* (1 - p-value)
+<p>then P(X|Y) = base rate*power /(1 - base rate *(1-power) - (1-base rate)*(1 - p-value))
 
         </section>
 
@@ -66,4 +74,14 @@ There are actually some substantive differences between the Baysian framework an
       </div>
     </div>
   </body>
+  <script type='text/javascript'>
+    function calculateFP() {
+      var base_rate = document.getElementById('base_rate').value;
+      var p_value = document.getElementById('p-value').value;
+      var power = document.getElementById('power').value;
+      var false_positive = 0.0;
+      false_positive = base_rate*power/(1-base_rate*(1-power)-(1-base_rate)*(1-p_value));
+      document.getElementById('false_positive').value = false_positive.toString();
+    }
+  </script>
 </html>
