@@ -346,7 +346,7 @@ footer a:hover {
     border: solid 1px #ddd;
     padding: 5px 3px;
     margin-bottom: 20px;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
 }
 
 /* #Media Queries
