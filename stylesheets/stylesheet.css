@@ -337,6 +337,18 @@ footer a:hover {
 * html .clearfix {height: 1%;}
 .clearfix {display: block;}
 
+#equations {
+    color: #eee;
+    font-size: 14px;
+    margin-left: 20px;
+    /*font-weight: bold;*/
+    background: #555;
+    border: solid 1px #ddd;
+    padding: 5px 3px;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
 /* #Media Queries
 ================================================== */
 
