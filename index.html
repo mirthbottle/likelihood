@@ -63,7 +63,7 @@ There are actually some substantive differences between the Baysian framework an
 <p><strong>P(Y|X)</strong> = power <br><input type='text' name='power' id='power' value='0.8' onchange='calculateFP()' data-slider="true" data-slider-step="0.01" data-slider-range="0, 1">
 
 <br>
-<p><strong>P(X|Y)</strong> = false positives = <strong><span id="false_positive">0.640</span></strong>
+<p><strong>P(X|Y)</strong> = true positives = <strong><span id="true_positive">0.640</span></strong>
 <h6>  
 This is the probability that the treatment didn't work even though you measured that it did.  This is often counterintuitive, especially if the base rate is very low.</h6><br>
 <div id='equations'>
@@ -101,9 +101,9 @@ P(1-Y) = P(X)*P(1-Y|X) + P(1-X)*P(1-Y|1-X)<br>
       var base_rate = document.getElementById('base_rate').value;
       var p_value = document.getElementById('p-value').value;
       var power = document.getElementById('power').value;
-      var false_positive = 0.0;
-      false_positive = base_rate*power/(1-base_rate*(1-power)-(1-base_rate)*(1-p_value));
-      document.getElementById('false_positive').innerHTML = false_positive.toFixed(3);
+      var true_positive = 0.0;
+      true_positive = base_rate*power/(1-base_rate*(1-power)-(1-base_rate)*(1-p_value));
+      document.getElementById('true_positive').innerHTML = true_positive.toFixed(3);
     }
     
   </script>
